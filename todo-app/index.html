@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TaskFlow – Smart To‑Do Manager</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <header class="app-header">
+        <div class="logo-date">
+            <h1 class="logo">TaskFlow</h1>
+            <span class="date" id="current-date"></span>
+        </div>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Switch to dark theme" aria-pressed="false">
+            <span class="icon" aria-hidden="true">☾</span>
+            <span class="text">Dark mode</span>
+        </button>
+    </header>
+
+    <main class="app-main">
+        <section class="welcome">
+            <h2 class="greeting" id="greeting"></h2>
+            <p class="subtitle">Stay focused, stay productive.</p>
+            <p class="today" id="today-date"></p>
+        </section>
+
+        <section class="stats">
+            <div class="stat" id="total-count">Total: 0</div>
+            <div class="stat" id="active-count">Active: 0</div>
+            <div class="stat" id="completed-count">Completed: 0</div>
+        </section>
+
+        <section class="task-creation">
+            <form id="task-form" novalidate>
+                <input type="text" id="task-title" placeholder="Task title" required />
+                <textarea id="task-desc" placeholder="Optional description"></textarea>
+                <button type="submit" class="add-btn">Add Task</button>
+            </form>
+        </section>
+
+        <section class="filter-section">
+            <div class="filters" role="group" aria-label="Task filters">
+                <button class="filter-btn active" data-filter="all">All (<span id="filter-all-count">0</span>)</button>
+                <button class="filter-btn" data-filter="active">Active (<span id="filter-active-count">0</span>)</button>
+                <button class="filter-btn" data-filter="completed">Completed (<span id="filter-completed-count">0</span>)</button>
+            </div>
+            <input type="search" id="search-input" placeholder="Search tasks..." aria-label="Search tasks" />
+            <button class="clear-completed" id="clear-completed">Clear Completed</button>
+        </section>
+
+        <section class="task-list" id="task-list" aria-live="polite"></section>
+
+        <section class="empty-state hidden" id="empty-state">
+            <p>No tasks to display.</p>
+        </section>
+    </main>
+
+    <script src="js/app.js" defer></script>
+</body>
+</html>

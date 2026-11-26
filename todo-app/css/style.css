@@ -1,0 +1,255 @@
+/* TaskFlow – Smart To‑Do Manager */
+/* --------------------------------------------------- */
+/* Theme variables */
+:root {
+    --primary-color: #1e3a8a;
+    --secondary-color: #3b82f6;
+    --background-color: #f8fafc;
+    --surface-color: #ffffff;
+    --text-color: #1e293b;
+    --muted-color: #64748b;
+    --border-color: #e2e8f0;
+    --accent-color: #f59e0b;
+    --focus-color: #2563eb;
+    --shadow-color: rgba(0,0,0,0.1);
+    --transition-duration: 0.3s;
+}
+[data-theme="dark"] {
+    --primary-color: #93c5fd;
+    --secondary-color: #60a5fa;
+    --background-color: #1e293b;
+    --surface-color: #0f172a;
+    --text-color: #e2e8f0;
+    --muted-color: #94a3b8;
+    --border-color: #334155;
+    --accent-color: #fbbf24;
+    --focus-color: #818cf8;
+    --shadow-color: rgba(0,0,0,0.5);
+}
+html {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: Arial, Helvetica, sans-serif;
+    transition: background-color var(--transition-duration) ease, color var(--transition-duration) ease;
+    scroll-behavior: smooth;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    transition: background-color var(--transition-duration) ease, color var(--transition-duration) ease, border-color var(--transition-duration) ease, box-shadow var(--transition-duration) ease;
+}
+/* Layout */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background-color: var(--surface-color);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+.logo-date {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+.logo {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    color: var(--primary-color);
+    margin: 0;
+}
+.date {
+    font-size: 0.9rem;
+    color: var(--muted-color);
+}
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: none;
+    border: 2px solid var(--primary-color);
+    border-radius: 6px;
+    padding: 0.4rem 0.8rem;
+    color: var(--primary-color);
+    cursor: pointer;
+    font-weight: 600;
+}
+.theme-toggle .icon {font-size: 1.2rem;}
+.app-main {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 2rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.welcome .greeting {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+.welcome .subtitle {
+    font-size: 1rem;
+    color: var(--muted-color);
+    margin-bottom: 0.5rem;
+}
+.stats {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-around;
+    background-color: var(--surface-color);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+.stat {
+    font-weight: 600;
+    color: var(--text-color);
+}
+.task-creation form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    background-color: var(--surface-color);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+#task-title, #task-desc {
+    width: 100%;
+    padding: 0.6rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font: inherit;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+#task-title:focus, #task-desc:focus {
+    outline: 2px solid var(--focus-color);
+}
+.add-btn {
+    align-self: flex-start;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-weight: 600;
+}
+.filter-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--surface-color);
+    padding: 0.8rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+.filters {
+    display: flex;
+    gap: 0.5rem;
+}
+.filter-btn {
+    background: none;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--text-color);
+    border-bottom: 2px solid transparent;
+}
+.filter-btn.active {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+#search-input {
+    flex: 1;
+    min-width: 150px;
+    padding: 0.4rem 0.6rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font: inherit;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+.clear-completed {
+    background: none;
+    border: none;
+    color: var(--accent-color);
+    cursor: pointer;
+    font-weight: 600;
+}
+.task-list {
+    display: grid;
+    gap: 1rem;
+}
+.task-card {
+    background-color: var(--surface-color);
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 1px 3px var(--shadow-color);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.task-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.task-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+.task-title.completed {
+    text-decoration: line-through;
+    color: var(--muted-color);
+}
+.task-desc {
+    font-size: 0.95rem;
+    color: var(--muted-color);
+}
+.task-actions {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+}
+.task-actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--primary-color);
+    font-size: 0.9rem;
+}
+.task-actions button.delete {
+    color: var(--accent-color);
+}
+.empty-state {
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.1rem;
+    color: var(--muted-color);
+}
+.hidden {display: none;}
+/* Responsive */
+@media (max-width: 768px) {
+    .app-header {flex-direction: column;gap: 0.5rem;}
+    .stats {flex-direction: column;align-items: stretch;}
+    .filter-section {flex-direction: column;align-items: stretch;}
+    .task-card {font-size: 0.95rem;}
+}
+@media (prefers-reduced-motion: reduce) {
+    * {transition-duration: 0.01ms !important;}
+}
