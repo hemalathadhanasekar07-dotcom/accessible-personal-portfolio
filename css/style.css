@@ -22,20 +22,6 @@ body {
     font-size: 16px;
 }
 
-/* =========================================
-   2. COLOR VARIABLES
-========================================= */
-
-:root {
-    --primary-color: #1e3a8a;
-    --secondary-color: #2563eb;
-    --text-color: #1e293b;
-    --muted-color: #64748b;
-    --background-color: #f8fafc;
-    --white-color: #ffffff;
-    --border-color: #e2e8f0;
-    --focus-color: #f59e0b;
-}
 
 /* =========================================
    3. ACCESSIBILITY - SKIP LINK
@@ -66,7 +52,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 20px 8%;
-    background-color: var(--white-color);
+    background-color: var(--surface-color);
     border-bottom: 1px solid var(--border-color);
     position: sticky;
     top: 0;
@@ -198,7 +184,7 @@ p {
 article {
     padding: 24px;
     margin: 20px 0;
-    background-color: var(--white-color);
+    background-color: var(--surface-color);
     border: 1px solid var(--border-color);
     border-radius: 10px;
 }
@@ -222,7 +208,7 @@ time {
 form {
     max-width: 650px;
     padding: 30px;
-    background-color: var(--white-color);
+    background-color: var(--surface-color);
     border: 1px solid var(--border-color);
     border-radius: 10px;
 }
@@ -244,7 +230,7 @@ textarea {
     padding: 12px;
     border: 1px solid #94a3b8;
     border-radius: 6px;
-    background-color: var(--white-color);
+    background-color: var(--surface-color);
     color: var(--text-color);
     font: inherit;
 }
@@ -294,7 +280,7 @@ textarea:focus-visible {
 .site-footer {
     padding: 30px 8%;
     margin-top: 40px;
-    background-color: #0f172a;
+    background-color: var(--surface-color);
     color: var(--white-color);
     text-align: center;
 }
@@ -407,3 +393,69 @@ textarea[aria-invalid="true"] {
     display: none;
 }
 
+/* =========================================
+   2. THEME VARIABLES
+   ========================================= */
+
+:root {
+    --primary-color: #1e3a8a;
+    --secondary-color: #3b82f6;
+    --background-color: #f8fafc;
+    --surface-color: #ffffff;
+    --text-color: #1e293b;
+    --muted-color: #64748b;
+    --border-color: #e2e8f0;
+    --accent-color: #f59e0b;
+    --focus-color: #2563eb;
+    --white-color: #ffffff;
+    --shadow-color: rgba(0,0,0,0.1);
+}
+
+[data-theme="dark"] {
+    --primary-color: #93c5fd;
+    --secondary-color: #60a5fa;
+    --background-color: #1e293b;
+    --surface-color: #0f172a;
+    --text-color: #e2e8f0;
+    --muted-color: #94a3b8;
+    --border-color: #334155;
+    --accent-color: #fbbf24;
+    --focus-color: #818cf8;
+    --white-color: #f8fafc;
+    --shadow-color: rgba(0,0,0,0.5);
+}
+
+html {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Theme transition for smoother change */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+/* Mobile navigation toggle button styles */
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+    }
+    nav ul {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+    }
+    nav ul.active {
+        display: flex;
+    }
+}

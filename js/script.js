@@ -146,3 +146,63 @@ if (contactForm) {
     });
 
 }
+// =========================================
+// 7. LIGHT / DARK THEME TOGGLE
+// =========================================
+
+// Initialize theme based on saved preference or system setting
+function initTheme() {
+    const saved = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const theme = saved || (prefersDark ? 'dark' : 'light');
+    document.documentElement.dataset.theme = theme;
+    const toggle = document.getElementById('theme-toggle');
+    if (toggle) {
+        const isDark = theme === 'dark';
+        toggle.setAttribute('aria-pressed', String(isDark));
+        toggle.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+        const icon = toggle.querySelector('span');
+        const text = toggle.querySelector('.theme-toggle-text');
+        if (icon) icon.textContent = isDark ? '☀' : '☾';
+        if (text) text.textContent = isDark ? 'Light mode' : 'Dark mode';
+    }
+}
+initTheme();
+
+// Mobile navigation toggle
+const navToggle = document.querySelector('.nav-toggle');
+const navUl = document.querySelector('nav ul');
+if (navToggle && navUl) {
+    navToggle.addEventListener('click', () => {
+        const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', String(!expanded));
+        navUl.classList.toggle('active');
+    });
+}
+
+
+if (themeToggle) {
+
+    const themeIcon = themeToggle.querySelector("span");
+    const themeText = themeToggle.querySelector(".theme-toggle-text");
+
+    themeToggle.addEventListener("click", function () {
+
+        const isDark = document.documentElement.dataset.theme !== "dark";
+
+        document.documentElement.dataset.theme =
+            isDark ? "dark" : "light";
+
+        themeToggle.setAttribute("aria-pressed", String(isDark));
+
+        themeToggle.setAttribute(
+            "aria-label",
+            isDark ? "Switch to light theme" : "Switch to dark theme"
+        );
+
+        themeIcon.textContent = isDark ? "☀" : "☾";
+        themeText.textContent = isDark ? "Light mode" : "Dark mode";
+
+    });
+
+}
